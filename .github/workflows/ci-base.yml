@@ -1,0 +1,22 @@
+name: Integracion Continua (CI) Base
+
+on:
+  pull_request: # El robot despierta cuando alguien abre un Pull Request
+    branches:
+      - main    # Solo vigila la rama principal
+
+jobs:
+  verificacion-inicial:
+    name: Inspeccion Base
+    runs-on: ubuntu-latest # La computadora desechable que te presta GitHub
+
+    steps:
+      - name: 📥 Descargar el código del repositorio
+        uses: actions/checkout@v4
+
+      - name: 🔍 Revisar los archivos
+        run: |
+          echo "¡El robot inspector ha despertado!"
+          echo "Revisando los archivos de este Pull Request..."
+          ls -la
+          echo "Todo en orden. Esperando que el equipo defina el lenguaje (Node/Python/Java) en la reunión para agregar pruebas de compilación."
