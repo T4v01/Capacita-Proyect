@@ -1,0 +1,15 @@
+# Dependencias comunes
+node_modules/
+venv/
+env/
+__pycache__/
+
+# Variables de entorno
+.env
+.env.*
+
+# Logs y carpetas de compilación
+*.log
+dist/
+build/
+coverage/
