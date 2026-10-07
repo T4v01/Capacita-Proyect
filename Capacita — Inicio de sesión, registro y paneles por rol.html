@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Capacita</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--background:#f5f6fb;--ink:#0b1230;--muted:#5b6482;--primary:#4f46e5;--border:#e3e7f1;--success:#3f6212;--success-border:#84cc16;--success-bg:#ecfccb;--error:#9b2c1f;--error-border:#ff746c;--err-bg:#ffe9e7;--soft:#f0efff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);background:var(--background);font-family:"Manrope",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+button{font-family:inherit}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.page{display:grid;grid-template-columns:5fr 7fr;min-height:100vh}
+.brand{position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:56px;overflow:hidden;color:#fff;background:linear-gradient(135deg,#0b1230,#1e2a6b)}
+.brand::before,.brand::after{position:absolute;content:"";border-radius:50%;pointer-events:none}
+.brand::before{width:460px;height:460px;top:-140px;left:300px;background:rgb(79 70 229/28%)}
+.brand::after{width:320px;height:320px;top:560px;left:-120px;background:rgb(109 90 230/14%)}
+.logo,.pitch,.stats{position:relative;z-index:1}
+.logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:800}
+.logo-mark{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:#6553ec;font-size:22px}
+.pitch{margin:48px 0}
+.pitch h1{max-width:488px;margin:0 0 24px;font-size:38px;line-height:1.22;font-weight:800;letter-spacing:-.8px}
+.pitch p{max-width:480px;margin:0 0 32px;color:#b8c0e0;font-size:16px;line-height:1.65}
+.benefits{display:grid;gap:14px;margin:0;padding:0;list-style:none}
+.benefits li{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:500}
+.check{display:inline-grid;flex:0 0 auto;place-items:center;width:20px;height:20px;border-radius:50%;color:#243810;background:#84cc16;font-size:13px;font-weight:800}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat{padding:16px;border:1px solid rgb(255 255 255/12%);border-radius:16px;background:rgb(255 255 255/9%)}
+.stat strong{display:block;margin-bottom:4px;font-size:22px;font-weight:800}
+.stat span{color:#b8c0e0;font-size:12px;font-weight:500}
+.form-area{display:grid;place-items:center;padding:64px 32px}
+.card{width:100%;max-width:480px;padding:36px;border:1px solid #e8ebf3;border-radius:24px;background:#fff;box-shadow:0 16px 40px rgb(10 18 48/8%)}
+.card h2{margin:0 0 8px;font-size:28px;line-height:1.35;font-weight:800;letter-spacing:-.6px}
+.subtitle{margin:0 0 24px;color:var(--muted);font-size:15px;line-height:1.6}
+.fields{display:grid;gap:20px}
+.name-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.label{display:block;margin-bottom:8px;font-size:13px;font-weight:600}
+.field-value{display:flex;align-items:center;gap:10px;min-height:48px;padding:0 14px;border:1px solid var(--border);border-radius:10px;background:#fff;transition:border-color .15s,box-shadow .15s}
+.field-value:focus-within{border-color:var(--primary);box-shadow:0 0 0 3px rgb(79 70 229/18%)}
+.field-value.success{border-color:var(--success-border)}
+.field-value.error{border-color:var(--error-border)}
+.field-value input{flex:1;min-width:0;height:46px;border:0;outline:0;padding:0;color:var(--ink);background:transparent;font:500 14px "Manrope",Arial,sans-serif}
+.field-value input::placeholder{color:#8792b6;opacity:.8}
+.field-icon{color:#8792b6;font-size:18px;line-height:1}
+.trailing{margin-left:auto}
+.state-icon{font-size:14px;font-weight:800;min-width:16px;text-align:center}
+.success .state-icon{color:#65a30d}
+.error .state-icon{color:var(--error-border)}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.toggle{border:0;background:none;padding:6px;margin:-6px;cursor:pointer;color:#8792b6;font-size:18px;line-height:1;border-radius:8px}
+.toggle:hover{color:var(--primary)}
+.helper{display:flex;align-items:center;gap:6px;margin:8px 0 0;font-size:12px;font-weight:500;color:var(--muted);min-height:16px}
+.helper.success{color:var(--success)}
+.helper.error{color:var(--error)}
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;border:0;margin:0;padding:0}
+.role{position:relative;display:grid;justify-items:center;align-content:center;gap:9px;min-height:80px;padding:10px 4px;border:1px solid var(--border);border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;background:#fff;transition:border-color .15s,background .15s,color .15s}
+.role:hover{border-color:var(--primary)}
+.role:has(input:focus-visible){outline:2px solid var(--primary);outline-offset:2px}
+.role input{position:absolute;opacity:0;pointer-events:none}
+.role.selected{color:var(--primary);border-color:var(--primary);background:var(--soft)}
+.role-icon{font-size:21px;line-height:1}
+.requirements{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0;padding:0;list-style:none}
+.requirement{padding:5px 10px;border-radius:999px;color:var(--muted);background:#f0f2f7;font-size:12px;font-weight:500;transition:background .15s,color .15s}
+.requirement.met{color:var(--success);background:var(--success-bg)}
+.strength{height:4px;margin-top:10px;border-radius:4px;background:#f0f2f7;overflow:hidden}
+.strength i{display:block;height:100%;width:0;transition:width .2s,background .2s}
+.create-account{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:50px;margin-top:24px;border:0;border-radius:12px;color:#fff;background:linear-gradient(100deg,#4f46e5,#6b52f1);box-shadow:0 6px 14px rgb(43 36 108/25%);font:600 15px "Manrope",Arial,sans-serif;cursor:pointer;transition:transform .1s,opacity .15s}
+.create-account:active{transform:translateY(1px)}
+.create-account[aria-busy="true"]{opacity:.8;cursor:progress}
+.create-account .spinner{border-color:rgb(255 255 255/40%);border-top-color:#fff}
+.login{margin:20px 0 0;color:var(--muted);text-align:center;font-size:14px;font-weight:500}
+.link{margin-left:4px;color:var(--primary);font:700 14px "Manrope",Arial,sans-serif;background:none;border:0;padding:0;cursor:pointer}
+.link:hover{text-decoration:underline}
+.done{text-align:center;padding:12px 0}
+.done .big{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 20px;border-radius:50%;background:var(--success-bg);color:var(--success);font-size:30px;font-weight:800}
+.chip{display:inline-block;padding:6px 12px;border-radius:999px;background:var(--soft);color:var(--primary);font-size:13px;font-weight:600}
+
+.opts{display:flex;justify-content:flex-end;margin-top:12px}.opts .link{margin:0;font-size:13px}
+.demo{margin-top:24px;padding:14px;border:1px dashed var(--border);border-radius:12px}
+.demo p{margin:0 0 10px;color:var(--muted);font-size:12px;font-weight:500}
+.demo .pill{margin:0 6px 4px 0}
+.prof{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.avatar{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;color:#fff;background:linear-gradient(135deg,#4f46e5,#6b52f1);font-size:20px;font-weight:800}
+.dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:0}
+.dl div{padding:12px 14px;border:1px solid var(--border);border-radius:12px}
+.dl dt{margin-bottom:4px;color:var(--muted);font-size:12px;font-weight:600}
+.dl dd{margin:0;font-size:14px;font-weight:600;overflow-wrap:anywhere}
+.acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.panel .fields{max-width:520px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:10;padding:12px 18px;border-radius:12px;color:#fff;background:#0b1230;box-shadow:0 10px 30px rgb(10 18 48/30%);font:600 14px "Manrope",Arial,sans-serif;opacity:0;transform:translate(-50%,16px);pointer-events:none;transition:opacity .2s,transform .2s}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+/* Panel por rol */
+.app{display:grid;grid-template-columns:248px 1fr;min-height:100vh}
+.side{display:flex;flex-direction:column;gap:28px;padding:28px 20px;color:#fff;background:linear-gradient(160deg,#0b1230,#1e2a6b)}
+.side .logo{font-size:18px}
+.nav{display:grid;gap:4px}
+.nav button{display:flex;align-items:center;gap:10px;padding:11px 12px;border:0;border-radius:10px;color:#b8c0e0;background:none;font:600 14px "Manrope",Arial,sans-serif;text-align:left;cursor:pointer}
+.nav button:hover{background:rgb(255 255 255/8%);color:#fff}
+.nav button[aria-current="page"]{background:#4f46e5;color:#fff}
+.me{margin-top:auto;display:grid;gap:10px;padding:14px;border:1px solid rgb(255 255 255/12%);border-radius:14px;background:rgb(255 255 255/9%);font-size:13px}
+.me b{display:block;font-size:14px}
+.me span{color:#b8c0e0}
+.out{border:0;border-radius:8px;padding:8px;color:#fff;background:rgb(255 255 255/12%);font:600 13px "Manrope",Arial,sans-serif;cursor:pointer}
+.out:hover{background:rgb(255 255 255/20%)}
+.main{padding:32px 36px;min-width:0}
+.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}
+.top h1{margin:0 0 4px;font-size:28px;font-weight:800;letter-spacing:-.6px}
+.top p{margin:0;color:var(--muted);font-size:15px}
+.seg{display:inline-flex;padding:4px;border:1px solid var(--border);border-radius:12px;background:#fff}
+.seg button{border:0;border-radius:8px;padding:8px 12px;color:var(--muted);background:none;font:600 13px "Manrope",Arial,sans-serif;cursor:pointer}
+.seg button[aria-pressed="true"]{color:var(--primary);background:var(--soft)}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.kpi{padding:18px;border:1px solid #e8ebf3;border-radius:16px;background:#fff}
+.kpi strong{display:block;font-size:26px;font-weight:800}
+.kpi span{color:var(--muted);font-size:13px;font-weight:500}
+.panel{padding:22px;border:1px solid #e8ebf3;border-radius:20px;background:#fff;box-shadow:0 16px 40px rgb(10 18 48/6%);margin-bottom:20px}
+.panel h3{margin:0 0 14px;font-size:17px;font-weight:800}
+.tools{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.tools .field-value{flex:1;min-width:200px}
+.pill{border:1px solid var(--border);border-radius:999px;padding:8px 14px;color:var(--muted);background:#fff;font:600 13px "Manrope",Arial,sans-serif;cursor:pointer}
+.pill[aria-pressed="true"]{color:var(--primary);border-color:var(--primary);background:var(--soft)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.course{display:grid;gap:10px;padding:16px;border:1px solid var(--border);border-radius:14px}
+.course b{font-size:15px}
+.course small{color:var(--muted);font-size:12px;font-weight:500}
+.bar{height:6px;border-radius:6px;background:#f0f2f7;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#4f46e5,#6b52f1);transition:width .25s}
+.bar.full i{background:#84cc16}
+.btn{border:0;border-radius:10px;padding:9px 14px;color:#fff;background:var(--primary);font:600 13px "Manrope",Arial,sans-serif;cursor:pointer}
+.btn.ghost{color:var(--primary);background:var(--soft)}
+.btn.warn{color:var(--error);background:var(--err-bg)}
+.btn:disabled{color:var(--success);background:var(--success-bg);cursor:default}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{padding:10px 12px;color:var(--muted);font-size:12px;font-weight:600;text-align:left;border-bottom:1px solid var(--border)}
+td{padding:12px;border-bottom:1px solid #f0f2f7;font-weight:500;white-space:nowrap}
+.badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;background:var(--soft);color:var(--primary)}
+.badge.ok{background:var(--success-bg);color:var(--success)}
+.badge.off{background:var(--err-bg);color:var(--error)}
+.empty{padding:20px;color:var(--muted);text-align:center;font-size:14px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #f0f2f7;font-size:14px;font-weight:500}
+.row:last-child{border-bottom:0}
+.row small{display:block;color:var(--muted);font-weight:500}
+
+@media (max-width:1100px){.brand{padding:36px}.pitch h1{font-size:32px}.benefits li{font-size:13px}.form-area{padding:40px 24px}.card{padding:28px}}
+@media (max-width:860px){
+  .app{grid-template-columns:1fr}
+  .side{flex-direction:row;flex-wrap:wrap;align-items:center;padding:14px 16px;gap:10px}
+  .nav{display:flex;order:3;width:100%;overflow-x:auto}.nav button{white-space:nowrap}
+  .me{display:none}.main{padding:20px 16px}.kpis{grid-template-columns:1fr}
+  .side .out{display:block;margin-left:auto}
+}
+@media (min-width:861px){.side .out.m{display:none}}
+@media (max-width:760px){
+  .page{grid-template-columns:1fr}.brand{padding:24px}.pitch,.stats{display:none}
+  .brand::before{width:220px;height:220px;top:-140px;right:-40px;left:auto}.brand::after{display:none}
+  .form-area{padding:24px 16px 40px}.card{padding:24px 20px;border-radius:20px}.card h2{font-size:26px}.subtitle{font-size:14px}
+  .role{font-size:11px}.name-row{grid-template-columns:1fr}.requirement{font-size:11px}
+}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="page" id="reg">
+  <aside class="brand" aria-label="Acerca de Capacita">
+    <div class="logo"><span class="logo-mark" aria-hidden="true">♧</span><span>Capacita</span></div>
+    <section class="pitch">
+      <h1>Aprende, enseña y gestiona capacitaciones en un solo lugar.</h1>
+      <p>Una plataforma pensada para estudiantes, docentes y administradores que quieren crecer con orden y claridad.</p>
+      <ul class="benefits">
+        <li><span class="check" aria-hidden="true">✓</span>Catálogo con búsqueda y filtros en tiempo real</li>
+        <li><span class="check" aria-hidden="true">✓</span>Roles con accesos adaptados a cada perfil</li>
+        <li><span class="check" aria-hidden="true">✓</span>Tu perfil y tus datos siempre actualizados</li>
+      </ul>
+    </section>
+    <div class="stats">
+      <div class="stat"><strong>+120</strong><span>capacitaciones activas</span></div>
+      <div class="stat"><strong>4.8 / 5</strong><span>satisfacción promedio</span></div>
+    </div>
+  </aside>
+  <section class="form-area">
+    <article class="card" aria-labelledby="register-title">
+      <div id="loginv">
+        <form id="lf" novalidate>
+          <h2>Inicia sesión</h2>
+          <p class="subtitle">Accede a tus capacitaciones.</p>
+          <div class="fields">
+            <div><label class="label" for="le">Correo electrónico</label>
+              <div class="field-value" data-wrap="le"><span class="field-icon" aria-hidden="true">✉</span><input id="le" type="email" autocomplete="username" placeholder="tu@correo.com"></div></div>
+            <div><label class="label" for="lp">Contraseña</label>
+              <div class="field-value" data-wrap="lp"><span class="field-icon" aria-hidden="true">♙</span><input id="lp" type="password" autocomplete="current-password" placeholder="Tu contraseña"><button type="button" class="toggle trailing" data-toggle="lp" aria-label="Mostrar contraseña" aria-pressed="false">◉</button></div></div>
+            <p class="helper" id="h-lf" aria-live="polite" style="margin:-8px 0 0"></p>
+          </div>
+          <div class="opts"><button type="button" class="link" id="forgot">¿Olvidaste tu contraseña?</button></div>
+          <button class="create-account" type="submit" style="margin-top:16px"><span>Iniciar sesión</span><span aria-hidden="true">→</span></button>
+        </form>
+        <div class="demo"><p>Cuentas de prueba · contraseña Demo1234!</p>
+          <button type="button" class="pill" data-demo="0">Estudiante</button><button type="button" class="pill" data-demo="1">Docente</button><button type="button" class="pill" data-demo="2">Administrador</button></div>
+        <p class="login">¿No tienes cuenta? <button type="button" class="link" id="to-reg">Crear cuenta</button></p>
+      </div>
+      <form id="ff" hidden novalidate>
+        <h2>Recupera tu contraseña</h2>
+        <p class="subtitle">Escribe tu correo y te enviaremos un enlace para restablecerla.</p>
+        <label class="label" for="fe">Correo electrónico</label>
+        <div class="field-value" data-wrap="fe"><span class="field-icon" aria-hidden="true">✉</span><input id="fe" type="email" autocomplete="email" placeholder="tu@correo.com"></div>
+        <p class="helper" id="h-fe" aria-live="polite"></p>
+        <button class="create-account" type="submit"><span>Enviar enlace</span><span aria-hidden="true">→</span></button>
+        <p class="login"><button type="button" class="link" id="fback">← Volver a iniciar sesión</button></p>
+      </form>
+      <form id="form" novalidate hidden>
+        <h2 id="register-title">Crea tu cuenta</h2>
+        <p class="subtitle">Empieza a gestionar tus capacitaciones en minutos.</p>
+        <div class="fields">
+          <div class="name-row">
+            <div>
+              <label class="label" for="nombre">Nombre</label>
+              <div class="field-value" data-wrap="nombre"><input id="nombre" autocomplete="given-name" placeholder="Ana" aria-describedby="h-nombre"></div>
+              <p class="helper" id="h-nombre" aria-live="polite"></p>
+            </div>
+            <div>
+              <label class="label" for="apellidos">Apellidos</label>
+              <div class="field-value" data-wrap="apellidos"><input id="apellidos" autocomplete="family-name" placeholder="Quispe Rojas" aria-describedby="h-apellidos"></div>
+              <p class="helper" id="h-apellidos" aria-live="polite"></p>
+            </div>
+          </div>
+          <div>
+            <label class="label" for="email">Correo electrónico</label>
+            <div class="field-value" data-wrap="email">
+              <span class="field-icon" aria-hidden="true">✉</span>
+              <input id="email" type="email" autocomplete="email" placeholder="ana.quispe@correo.com" aria-describedby="h-email">
+              <span class="trailing state-icon" id="s-email" aria-hidden="true"></span>
+            </div>
+            <p class="helper" id="h-email" aria-live="polite"></p>
+          </div>
+          <fieldset class="roles" id="roles">
+            <legend class="label">Selecciona tu rol</legend>
+            <label class="role selected"><input type="radio" name="rol" value="Estudiante" checked><span class="role-icon" aria-hidden="true">♧</span><span>Estudiante</span></label>
+            <label class="role"><input type="radio" name="rol" value="Docente"><span class="role-icon" aria-hidden="true">▣</span><span>Docente</span></label>
+            <label class="role"><input type="radio" name="rol" value="Administrador"><span class="role-icon" aria-hidden="true">⬡</span><span>Administrador</span></label>
+          </fieldset>
+          <div>
+            <label class="label" for="pass">Contraseña</label>
+            <div class="field-value" data-wrap="pass">
+              <span class="field-icon" aria-hidden="true">♙</span>
+              <input id="pass" type="password" autocomplete="new-password" placeholder="Crea una contraseña" aria-describedby="reqs">
+              <button type="button" class="toggle trailing" data-toggle="pass" aria-label="Mostrar contraseña" aria-pressed="false">◉</button>
+            </div>
+            <div class="strength" aria-hidden="true"><i id="bar"></i></div>
+            <ul class="requirements" id="reqs" aria-label="Requisitos de contraseña">
+              <li class="requirement" data-r="len">8+ caracteres</li>
+              <li class="requirement" data-r="up">Una mayúscula</li>
+              <li class="requirement" data-r="num">Un número</li>
+              <li class="requirement" data-r="sym">Un símbolo</li>
+            </ul>
+          </div>
+          <div>
+            <label class="label" for="pass2">Confirmar contraseña</label>
+            <div class="field-value" data-wrap="pass2">
+              <span class="field-icon" aria-hidden="true">♙</span>
+              <input id="pass2" type="password" autocomplete="new-password" placeholder="Repite tu contraseña" aria-describedby="h-pass2">
+              <button type="button" class="toggle trailing" data-toggle="pass2" aria-label="Mostrar contraseña" aria-pressed="false">◉</button>
+            </div>
+            <p class="helper" id="h-pass2" aria-live="polite"></p>
+          </div>
+        </div>
+        <button class="create-account" id="submit" type="submit"><span id="submit-text">Crear cuenta</span><span id="submit-icon" aria-hidden="true">→</span></button>
+        <p class="login">¿Ya tienes cuenta? <button type="button" class="link" id="login">Inicia sesión</button></p>
+      </form>
+      <div class="done" id="done" hidden role="status">
+        <div class="big" aria-hidden="true">✓</div>
+        <h2>¡Cuenta creada!</h2>
+        <p class="subtitle" id="done-msg"></p>
+        <span class="chip" id="done-role"></span>
+        <button type="button" class="create-account" id="enter">Entrar a mi panel <span aria-hidden="true">→</span></button>
+        <p class="login"><button type="button" class="link" id="again">Registrar otra cuenta</button></p>
+      </div>
+    </article>
+  </section>
+</main>
+
+<div class="app" id="app" hidden>
+  <aside class="side">
+    <div class="logo"><span class="logo-mark" aria-hidden="true">♧</span><span>Capacita</span></div>
+    <nav class="nav" id="nav" aria-label="Navegación principal"></nav>
+    <div class="me"><div><b id="me-name"></b><span id="me-role"></span></div><button class="out" id="out1">Cerrar sesión</button></div>
+    <button class="out m" id="out2">Salir</button>
+  </aside>
+  <section class="main">
+    <div class="top">
+      <div><h1 id="hi"></h1><p id="sub"></p></div>
+      <div class="seg" role="group" aria-label="Ver panel como" id="seg"></div>
+    </div>
+    <div id="view"></div>
+  </section>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var form=$("form");
+var ACC=[{email:"ana@correo.com",pass:"Demo1234!",name:"Ana",last:"Quispe Rojas",role:"Estudiante",phone:"984 123 456",bio:"Ingeniería Informática y de Sistemas"},
+{email:"docente@capacita.pe",pass:"Demo1234!",name:"Marta",last:"Flores Huamán",role:"Docente",phone:"",bio:"Bases de datos"},
+{email:"admin@correo.com",pass:"Demo1234!",name:"Elena",last:"Paucar Soto",role:"Administrador",phone:"",bio:"Gestión académica"}];
+var me=null,page=0;
+var touched={},emailState="idle",emailTimer=null,busy=false,userName="",userRole="Estudiante";
+var EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+/* ---------- Registro ---------- */
+function setField(n,state,msg,icon){
+  var w=document.querySelector('[data-wrap="'+n+'"]');
+  w.classList.remove("success","error");if(state)w.classList.add(state);
+  var h=$("h-"+n);
+  if(h){h.className="helper"+(state?" "+state:"");h.textContent=msg?((state==="success"?"✓ ":state==="error"?"⊗ ":"")+msg):""}
+  var s=$("s-"+n);if(s)s.innerHTML=icon==="spin"?'<span class="spinner"></span>':(icon||"");
+  w.querySelector("input").setAttribute("aria-invalid",state==="error"?"true":"false");
+}
+function vName(n,l){var v=$(n).value.trim();
+  if(!v){setField(n,"error",l+" es obligatorio");return false}
+  if(v.length<2){setField(n,"error",l+" es muy corto");return false}
+  setField(n,"success","");return true}
+function vEmail(final){
+  var v=$("email").value.trim().toLowerCase();clearTimeout(emailTimer);
+  if(!v){emailState="idle";setField("email",final?"error":"",final?"Escribe tu correo electrónico":"");return false}
+  if(!EMAIL_RE.test(v)){emailState="invalid";setField("email","error","Ingresa un correo válido, por ejemplo nombre@correo.com","✕");return false}
+  emailState="checking";setField("email","","Comprobando disponibilidad…","spin");
+  emailTimer=setTimeout(function(){
+    if(ACC.some(function(a){return a.email.toLowerCase()===v})){emailState="taken";setField("email","error","Este correo ya está registrado. Prueba iniciar sesión","✕")}
+    else{emailState="ok";setField("email","success","Correo disponible","✓")}
+    refresh()},650);
+  return false}
+function reqs(p){return{len:p.length>=8,up:/[A-ZÁÉÍÓÚÑ]/.test(p),num:/\d/.test(p),sym:/[^A-Za-z0-9\sÁÉÍÓÚÑáéíóúñ]/.test(p)}}
+function vPass(){
+  var p=$("pass").value,r=reqs(p),n=0;
+  document.querySelectorAll("[data-r]").forEach(function(li){
+    var ok=r[li.dataset.r];if(ok)n++;li.classList.toggle("met",ok);
+    li.textContent=(ok?"✓ ":"")+li.textContent.replace("✓ ","")});
+  var b=$("bar");b.style.width=(p?n*25:0)+"%";
+  b.style.background=n<=1?"#ff746c":n<4?"#f5b301":"#84cc16";
+  var all=n===4,w=document.querySelector('[data-wrap="pass"]');
+  if(touched.pass){w.classList.toggle("error",!all);w.classList.toggle("success",all)}
+  return all}
+function vPass2(){
+  var a=$("pass").value,b=$("pass2").value;
+  if(!b){setField("pass2",touched.pass2?"error":"",touched.pass2?"Confirma tu contraseña":"");return false}
+  if(a!==b){setField("pass2","error","Las contraseñas no coinciden");return false}
+  setField("pass2","success","Las contraseñas coinciden");return true}
+function isValid(){var r=reqs($("pass").value);
+  return $("nombre").value.trim().length>1&&$("apellidos").value.trim().length>1&&emailState==="ok"&&r.len&&r.up&&r.num&&r.sym&&$("pass").value===$("pass2").value&&$("pass2").value!==""}
+function refresh(){$("submit").style.opacity=isValid()||busy?"1":".7"}
+
+[["nombre","El nombre"],["apellidos","Los apellidos"]].forEach(function(a){
+  $(a[0]).addEventListener("input",function(){if(touched[a[0]])vName(a[0],a[1]);refresh()});
+  $(a[0]).addEventListener("blur",function(){touched[a[0]]=true;vName(a[0],a[1]);refresh()})});
+$("email").addEventListener("input",function(){touched.email=true;vEmail(false);refresh()});
+$("email").addEventListener("blur",function(){touched.email=true;if(emailState==="idle"||!$("email").value)vEmail(true)});
+$("pass").addEventListener("input",function(){touched.pass=true;vPass();if(touched.pass2)vPass2();refresh()});
+$("pass2").addEventListener("input",function(){touched.pass2=true;vPass2();refresh()});
+$("pass2").addEventListener("blur",function(){touched.pass2=true;vPass2()});
+document.querySelectorAll("[data-toggle]").forEach(function(b){b.addEventListener("click",function(){
+  var i=$(b.dataset.toggle),s=i.type==="password";i.type=s?"text":"password";
+  b.setAttribute("aria-pressed",s);b.setAttribute("aria-label",s?"Ocultar contraseña":"Mostrar contraseña");b.textContent=s?"◎":"◉"})});
+$("roles").addEventListener("change",function(){
+  document.querySelectorAll(".role").forEach(function(l){l.classList.toggle("selected",l.querySelector("input").checked)})});
+
+form.addEventListener("submit",function(e){
+  e.preventDefault();if(busy)return;
+  touched={nombre:1,apellidos:1,email:1,pass:1,pass2:1};
+  var n1=vName("nombre","El nombre"),n2=vName("apellidos","Los apellidos");
+  if(emailState==="idle"||emailState==="invalid"||!$("email").value)vEmail(true);
+  var pOk=vPass();vPass2();
+  if(!isValid()){
+    var o=[["nombre",n1],["apellidos",n2],["email",emailState==="ok"],["pass",pOk],["pass2",$("pass").value===$("pass2").value&&$("pass2").value!==""]];
+    for(var k=0;k<o.length;k++)if(!o[k][1]){$(o[k][0]).focus();break}
+    return}
+  busy=true;$("submit").setAttribute("aria-busy","true");
+  $("submit-text").textContent="Creando cuenta…";$("submit-icon").innerHTML='<span class="spinner"></span>';
+  setTimeout(function(){
+    userRole=form.querySelector('input[name="rol"]:checked').value;userName=$("nombre").value.trim();
+    me={email:$("email").value.trim(),pass:$("pass").value,name:userName,last:$("apellidos").value.trim(),role:userRole,phone:"",bio:""};ACC.push(me);
+    $("done-msg").textContent="Bienvenida/o, "+userName+". Enviamos un enlace de confirmación a "+$("email").value.trim()+".";
+    $("done-role").textContent="Rol: "+userRole;
+    form.hidden=true;$("done").hidden=false;$("enter").focus()},1200)});
+
+function resetForm(){
+  form.reset();touched={};emailState="idle";busy=false;
+  $("submit").removeAttribute("aria-busy");$("submit-text").textContent="Crear cuenta";$("submit-icon").textContent="→";
+  ["nombre","apellidos","email","pass2"].forEach(function(n){setField(n,"","","")});
+  document.querySelector('[data-wrap="pass"]').classList.remove("error","success");vPass();
+  document.querySelectorAll(".role").forEach(function(l){l.classList.toggle("selected",l.querySelector("input").checked)});
+  refresh()}
+$("again").addEventListener("click",function(){resetForm();showAuth("form");$("nombre").focus()});
+$("login").addEventListener("click",function(){showAuth("loginv");$("le").focus()});
+
+/* ---------- Paneles por rol ---------- */
+var ICON={Estudiante:"♧",Docente:"▣",Administrador:"⬡"};
+var NAV={Estudiante:["Mis capacitaciones","Mi perfil"],Docente:["Mis cursos","Mi perfil"],Administrador:["Gestión","Mi perfil"]};
+var S={q:"",cat:"Todas",
+  courses:[{t:"Excel intermedio",c:"Ofimática",h:12,p:65},{t:"Liderazgo de equipos",c:"Habilidades",h:8,p:30},{t:"Seguridad de la información",c:"TI",h:10,p:0},{t:"Atención al usuario",c:"Habilidades",h:6,p:100},{t:"Python para análisis",c:"TI",h:20,p:10},{t:"Word avanzado",c:"Ofimática",h:8,p:0}],
+  teach:[{t:"Excel intermedio",n:42,p:68,st:"Activo"},{t:"Python para análisis",n:35,p:41,st:"Activo"},{t:"Word avanzado",n:28,p:15,st:"Borrador"}],
+  queue:["Tarea 3 · Lucía Mamani","Examen · Diego Ccori","Tarea 3 · Rosa Huamán","Proyecto · Luis Quispe"],
+  users:[{n:"Lucía Mamani",r:"Estudiante",on:true},{n:"Diego Ccori",r:"Estudiante",on:true},{n:"Marta Flores",r:"Docente",on:true},{n:"Raúl Condori",r:"Docente",on:false},{n:"Elena Paucar",r:"Administrador",on:true}],
+  reqs:["Carlos Apaza · Docente","Sofía Villca · Docente"]};
+var cur="Estudiante";
+
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function kpis(a){return'<div class="kpis">'+a.map(function(k){return'<div class="kpi"><strong>'+k[0]+'</strong><span>'+k[1]+'</span></div>'}).join("")+'</div>'}
+
+function vStudent(){
+  var c=S.courses,done=c.filter(function(x){return x.p===100}).length,prog=c.filter(function(x){return x.p>0&&x.p<100}).length;
+  var hrs=Math.round(c.reduce(function(a,x){return a+x.h*x.p/100},0));
+  var cats=["Todas","Ofimática","Habilidades","TI"];
+  var list=c.filter(function(x){return(S.cat==="Todas"||x.c===S.cat)&&x.t.toLowerCase().indexOf(S.q.toLowerCase())>-1});
+  $("sub").textContent="Tienes "+prog+" capacitaciones en curso.";
+  return kpis([[prog,"en curso"],[done,"completadas"],[hrs+" h","horas acumuladas"]])+
+  '<div class="panel"><h3>Catálogo y mi avance</h3><div class="tools"><div class="field-value"><span class="field-icon" aria-hidden="true">⌕</span><input id="q" value="'+esc(S.q)+'" placeholder="Buscar capacitaciones" aria-label="Buscar capacitaciones"></div>'+
+  cats.map(function(k){return'<button class="pill" data-cat="'+k+'" aria-pressed="'+(S.cat===k)+'">'+k+'</button>'}).join("")+'</div>'+
+  (list.length?'<div class="grid">'+list.map(function(x){var i=S.courses.indexOf(x);
+    return'<div class="course"><div><b>'+x.t+'</b><br><small>'+x.c+' · '+x.h+' h</small></div><div class="bar'+(x.p===100?' full':'')+'"><i style="width:'+x.p+'%"></i></div><small>'+x.p+'% completado</small>'+
+    (x.p===100?'<button class="btn" disabled>✓ Completada</button>':'<button class="btn'+(x.p?'':' ghost')+'" data-adv="'+i+'">'+(x.p?'Continuar':'Empezar')+'</button>')+'</div>'}).join("")+'</div>':'<div class="empty">Sin resultados. Prueba con otra búsqueda o categoría.</div>')+'</div>'}
+
+function vTeacher(){
+  var t=S.teach,stu=t.reduce(function(a,x){return a+x.n},0);
+  $("sub").textContent="Tienes "+S.queue.length+" entregas por calificar.";
+  return kpis([[t.filter(function(x){return x.st==="Activo"}).length,"cursos activos"],[stu,"estudiantes inscritos"],[S.queue.length,"por calificar"]])+
+  '<div class="panel"><h3>Mis cursos</h3><div class="tw"><table><thead><tr><th>Curso</th><th>Inscritos</th><th>Avance promedio</th><th>Estado</th></tr></thead><tbody>'+
+  t.map(function(x){return'<tr><td>'+x.t+'</td><td>'+x.n+'</td><td style="min-width:140px"><div class="bar"><i style="width:'+x.p+'%"></i></div></td><td><span class="badge'+(x.st==="Activo"?' ok':'')+'">'+x.st+'</span></td></tr>'}).join("")+'</tbody></table></div></div>'+
+  '<div class="panel"><h3>Entregas por calificar</h3>'+(S.queue.length?S.queue.map(function(x,i){return'<div class="row"><span>'+x+'</span><button class="btn" data-grade="'+i+'">Calificar</button></div>'}).join(""):'<div class="empty">Todo al día. No tienes entregas pendientes.</div>')+'</div>'}
+
+function vAdmin(){
+  var u=S.users;$("sub").textContent=S.reqs.length?"Hay "+S.reqs.length+" solicitudes de docente por revisar.":"No hay solicitudes pendientes.";
+  return kpis([[842+u.length,"usuarios"],[120,"capacitaciones activas"],[S.reqs.length,"solicitudes pendientes"]])+
+  '<div class="panel"><h3>Solicitudes de rol docente</h3>'+(S.reqs.length?S.reqs.map(function(x,i){return'<div class="row"><span>'+x+'</span><span><button class="btn" data-ok="'+i+'">Aprobar</button> <button class="btn warn" data-no="'+i+'">Rechazar</button></span></div>'}).join(""):'<div class="empty">No hay solicitudes pendientes.</div>')+'</div>'+
+  '<div class="panel"><h3>Usuarios</h3><div class="tw"><table><thead><tr><th>Nombre</th><th>Rol</th><th>Estado</th><th></th></tr></thead><tbody>'+
+  u.map(function(x,i){return'<tr><td>'+x.n+'</td><td><span class="badge">'+x.r+'</span></td><td><span class="badge '+(x.on?'ok':'off')+'">'+(x.on?'Activo':'Suspendido')+'</span></td><td><button class="btn '+(x.on?'warn':'ghost')+'" data-tg="'+i+'">'+(x.on?'Suspender':'Reactivar')+'</button></td></tr>'}).join("")+'</tbody></table></div></div>'}
+
+function render(keepFocus){
+  $("hi").textContent="Hola, "+userName;
+  $("me-name").textContent=userName;$("me-role").textContent=userRole;
+  $("nav").innerHTML=NAV[cur].map(function(n,i){return'<button type="button"'+(i===page?' aria-current="page"':'')+'><span aria-hidden="true">'+(i===0?ICON[cur]:"♙")+'</span>'+n+'</button>'}).join("");
+  $("seg").innerHTML=["Estudiante","Docente","Administrador"].map(function(r){return'<button type="button" data-role="'+r+'" aria-pressed="'+(r===cur)+'">'+r+'</button>'}).join("");
+  $("view").innerHTML=page===1?vProfile():cur==="Estudiante"?vStudent():cur==="Docente"?vTeacher():vAdmin();
+  if(keepFocus){var q=$("q");if(q){q.focus();q.setSelectionRange(q.value.length,q.value.length)}}}
+
+function enterApp(a){me=a;userName=a.name;userRole=a.role;cur=a.role;page=0;S.edit=false;S.pw=false;$("reg").hidden=true;$("app").hidden=false;render();window.scrollTo(0,0)}
+$("enter").addEventListener("click",function(){enterApp(me)});
+function out(){me=null;$("app").hidden=true;$("reg").hidden=false;resetForm();showAuth("loginv");toast("Sesión cerrada")}
+$("out1").addEventListener("click",out);$("out2").addEventListener("click",out);
+$("nav").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
+  page=Array.prototype.indexOf.call($("nav").children,b);S.edit=false;S.pw=false;render()});
+$("seg").addEventListener("click",function(e){var b=e.target.closest("[data-role]");if(b){cur=b.dataset.role;page=0;render()}});
+$("view").addEventListener("input",function(e){if(e.target.id==="q"){S.q=e.target.value;render(true)}});
+$("view").addEventListener("click",function(e){
+  var b=e.target.closest("button");if(!b)return;var d=b.dataset;
+  if(d.cat){S.cat=d.cat}
+  else if(d.adv){var c=S.courses[+d.adv];c.p=Math.min(100,c.p+(c.p?15:10))}
+  else if(d.grade){S.queue.splice(+d.grade,1)}
+  else if(d.tg){S.users[+d.tg].on=!S.users[+d.tg].on}
+  else if(d.ok||d.no){var r=S.reqs.splice(+(d.ok||d.no),1)[0];
+    if(d.ok){S.users.push({n:r.split(" · ")[0],r:"Docente",on:true})}}
+  else if(d.edit){S.edit=true}
+  else if(d.cancel){S.edit=false;S.pw=false}
+  else if(d.save){if(!saveProfile())return;S.edit=false}
+  else if(d.pwopen){S.pw=true}
+  else if(d.savepw){if(!savePw())return;S.pw=false}
+  else return;
+  render()});
+
+/* ---------- Auth: login / recuperar ---------- */
+function showAuth(w){["loginv","ff","form","done"].forEach(function(i){$(i).hidden=i!==w})}
+function toast(m){var t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove("on")},2400)}
+document.querySelectorAll("[data-demo]").forEach(function(b){b.addEventListener("click",function(){
+  var a=ACC[+b.dataset.demo];$("le").value=a.email;$("lp").value=a.pass;$("h-lf").textContent="";setField("le","","");setField("lp","","");$("le").focus()})});
+$("lf").addEventListener("submit",function(e){
+  e.preventDefault();var em=$("le").value.trim().toLowerCase(),pw=$("lp").value,h=$("h-lf");
+  setField("le",EMAIL_RE.test(em)?"":"error","");setField("lp",pw?"":"error","");
+  function bad(m){h.className="helper error";h.textContent="⊗ "+m}
+  if(!em||!pw){bad("Escribe tu correo y tu contraseña");return}
+  var a=ACC.filter(function(x){return x.email.toLowerCase()===em})[0];
+  if(!a||a.pass!==pw){setField("lp","error","");bad("Correo o contraseña incorrectos");return}
+  setField("le","","");setField("lp","","");h.textContent="";$("lp").value="";enterApp(a)});
+$("forgot").addEventListener("click",function(){showAuth("ff");$("fe").focus()});
+$("fback").addEventListener("click",function(){showAuth("loginv")});
+$("to-reg").addEventListener("click",function(){showAuth("form");$("nombre").focus()});
+$("ff").addEventListener("submit",function(e){
+  e.preventDefault();var ok=EMAIL_RE.test($("fe").value.trim()),h=$("h-fe");
+  setField("fe",ok?"":"error","");h.className="helper "+(ok?"success":"error");
+  h.textContent=ok?"✓ Si el correo está registrado, te enviamos un enlace para restablecer tu contraseña.":"⊗ Ingresa un correo válido"});
+
+/* ---------- Perfil ---------- */
+function pfield(id,l,v,t){return'<div><label class="label" for="p-'+id+'">'+l+'</label><div class="field-value"><input id="p-'+id+'" type="'+(t||"text")+'" value="'+esc(v||"")+'"></div><p class="helper error" id="h-p-'+id+'" aria-live="polite"></p></div>'}
+function wfield(id,l){return'<div><label class="label" for="w-'+id+'">'+l+'</label><div class="field-value"><input id="w-'+id+'" type="password" autocomplete="'+(id==="cur"?"current-password":"new-password")+'"></div></div>'}
+function vProfile(){
+  var lab={Estudiante:"Programa de estudios",Docente:"Especialidad",Administrador:"Área"}[userRole];
+  $("sub").textContent="Consulta y actualiza tu información personal.";
+  var rows=[["Nombre",me.name],["Apellidos",me.last],["Correo electrónico",me.email],["Teléfono",me.phone||"—"],[lab,me.bio||"—"]];
+  var head='<div class="prof"><div class="avatar" aria-hidden="true">'+esc((me.name[0]+(me.last[0]||"")).toUpperCase())+'</div><div><b>'+esc(me.name+" "+me.last)+'</b><br><span class="badge">'+userRole+'</span></div></div>';
+  var data=S.edit?
+    '<div class="fields">'+pfield("name","Nombre",me.name)+pfield("last","Apellidos",me.last)+pfield("email","Correo electrónico",me.email,"email")+pfield("phone","Teléfono",me.phone,"tel")+pfield("bio",lab,me.bio)+'</div><div class="acts"><button class="btn" data-save="1">Guardar cambios</button><button class="btn ghost" data-cancel="1">Cancelar</button></div>':
+    '<dl class="dl">'+rows.map(function(r){return'<div><dt>'+r[0]+'</dt><dd>'+esc(r[1])+'</dd></div>'}).join("")+'</dl><div class="acts"><button class="btn" data-edit="1">Editar mis datos</button></div>';
+  var pw=S.pw?
+    '<div class="fields">'+wfield("cur","Contraseña actual")+wfield("new","Nueva contraseña")+wfield("rep","Confirmar nueva contraseña")+'<p class="helper error" id="h-pw" aria-live="polite" style="margin:0"></p></div><div class="acts"><button class="btn" data-savepw="1">Actualizar contraseña</button><button class="btn ghost" data-cancel="1">Cancelar</button></div>':
+    '<p class="subtitle" style="margin:0 0 14px">Cambia tu contraseña cuando lo necesites.</p><button class="btn ghost" data-pwopen="1">Cambiar contraseña</button>';
+  return'<div class="panel">'+head+'<h3>Mis datos</h3>'+data+'</div><div class="panel"><h3>Seguridad</h3>'+pw+'</div>'}
+function pf(id){return $("p-"+id).value.trim()}
+function perr(id,m){$("h-p-"+id).textContent=m?"⊗ "+m:"";$("p-"+id).parentNode.classList.toggle("error",!!m)}
+function saveProfile(){
+  var n=pf("name"),l=pf("last"),e=pf("email").toLowerCase(),ph=pf("phone");
+  var eOk=EMAIL_RE.test(e),dup=ACC.some(function(a){return a!==me&&a.email.toLowerCase()===e}),pBad=ph&&!/^[0-9+\s-]{6,15}$/.test(ph);
+  perr("name",n.length<2?"Escribe tu nombre":"");perr("last",l.length<2?"Escribe tus apellidos":"");
+  perr("email",!eOk?"Ingresa un correo válido":dup?"Este correo ya está en uso":"");
+  perr("phone",pBad?"Usa solo números, espacios, + o -":"");
+  if(n.length<2||l.length<2||!eOk||dup||pBad)return false;
+  me.name=n;me.last=l;me.email=e;me.phone=ph;me.bio=pf("bio");userName=n;toast("Datos actualizados");return true}
+function savePw(){
+  var c=$("w-cur").value,n=$("w-new").value,r=$("w-rep").value,q=reqs(n),m="";
+  if(c!==me.pass)m="La contraseña actual no es correcta";
+  else if(!(q.len&&q.up&&q.num&&q.sym))m="La nueva contraseña necesita 8+ caracteres, una mayúscula, un número y un símbolo";
+  else if(n!==r)m="Las contraseñas nuevas no coinciden";
+  else if(n===c)m="La nueva contraseña debe ser distinta de la actual";
+  $("h-pw").textContent=m?"⊗ "+m:"";
+  if(m)return false;me.pass=n;toast("Contraseña actualizada");return true}
+
+vPass();refresh();
+})();
+</script>
+</body>
+</html>
