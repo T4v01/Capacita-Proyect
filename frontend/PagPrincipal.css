@@ -1,0 +1,774 @@
+/* ============================
+   RESET
+============================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f5f6fb;
+
+    color: #111936;
+}
+
+
+/* ============================
+   APP
+============================ */
+
+.app {
+    min-height: 100vh;
+
+    display: flex;
+}
+
+
+/* ============================
+   SIDEBAR
+============================ */
+
+.sidebar {
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    width: 181px;
+    height: 100vh;
+
+    background: #11193f;
+
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 21px;
+}
+
+
+/* ============================
+   BRAND
+============================ */
+
+.brand {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.brand-logo {
+    width: 24px;
+    height: 24px;
+
+    background: #5b55f5;
+
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+}
+
+
+/* ============================
+   NAV
+============================ */
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.nav-item {
+    height: 29px;
+
+    padding: 0 10px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    border-radius: 7px;
+
+    color: #aeb5d2;
+
+    text-decoration: none;
+
+    font-size: 11px;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+
+    color: white;
+}
+
+.nav-item.active {
+    background: #30385f;
+
+    color: white;
+}
+
+.nav-icon {
+    width: 13px;
+
+    text-align: center;
+
+    font-size: 13px;
+}
+
+
+/* ============================
+   ROL ACTIVO
+============================ */
+
+.active-role {
+    background: #292f56;
+
+    border-radius: 8px;
+
+    padding: 11px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.role-label {
+    font-size: 8px;
+
+    color: #8e96b6;
+}
+
+.role-name {
+    font-size: 11px;
+
+    font-weight: bold;
+
+    color: white;
+}
+
+
+/* ============================
+   CONTENT
+============================ */
+
+.content {
+    width: calc(100% - 181px);
+
+    margin-left: 181px;
+}
+
+
+/* ============================
+   TOPBAR
+============================ */
+
+.topbar {
+    height: 60px;
+
+    background: white;
+
+    border-bottom: 1px solid #e2e4ec;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 27px;
+}
+
+.greeting {
+    font-size: 12px;
+
+    color: #111936;
+
+    font-weight: 500;
+}
+
+
+/* ============================
+   PROFILE
+============================ */
+
+.profile {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    border: 1px solid #e2e4ec;
+
+    border-radius: 9px;
+
+    padding: 4px 8px 4px 5px;
+}
+
+.avatar {
+    width: 27px;
+    height: 27px;
+
+    border-radius: 50%;
+
+    background: #3936a9;
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 9px;
+
+    font-weight: bold;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 1px;
+}
+
+.profile-info strong {
+    font-size: 9px;
+}
+
+.profile-info span {
+    font-size: 8px;
+
+    color: #7d849e;
+}
+
+.arrow {
+    margin-left: 5px;
+
+    color: #69718c;
+
+    font-size: 12px;
+}
+
+
+/* ============================
+   MAIN
+============================ */
+
+.main {
+    padding: 25px 27px;
+
+    max-width: 100%;
+}
+
+
+/* ============================
+   PAGE HEADING
+============================ */
+
+.page-heading {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    margin-bottom: 14px;
+}
+
+.page-heading h1 {
+    font-size: 23px;
+
+    margin-bottom: 5px;
+
+    color: #111936;
+}
+
+.page-heading p {
+    color: #7d849e;
+
+    font-size: 10px;
+}
+
+.course-count {
+    color: #535d7b;
+
+    font-size: 9px;
+
+    margin-bottom: 3px;
+}
+
+
+/* ============================
+   SEARCH
+============================ */
+
+.search {
+    height: 37px;
+
+    background: white;
+
+    border: 1px solid #e1e3eb;
+
+    border-radius: 9px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 12px;
+
+    margin-bottom: 16px;
+
+    box-shadow: 0 2px 7px rgba(20, 25, 60, 0.03);
+}
+
+.search-icon {
+    color: #8b93ad;
+
+    font-size: 19px;
+
+    margin-right: 7px;
+}
+
+.search input {
+    border: none;
+
+    outline: none;
+
+    width: 100%;
+
+    font-size: 10px;
+
+    color: #333b59;
+}
+
+.search input::placeholder {
+    color: #939ab1;
+}
+
+
+/* ============================
+   FILTERS
+============================ */
+
+.filters {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 16px;
+}
+
+.categories {
+    display: flex;
+
+    gap: 6px;
+}
+
+.filter,
+.select {
+    border: 1px solid #dfe2eb;
+
+    background: white;
+
+    color: #4c5675;
+
+    border-radius: 14px;
+
+    height: 26px;
+
+    padding: 0 12px;
+
+    font-size: 9px;
+
+    cursor: pointer;
+}
+
+.filter.active {
+    background: #574df0;
+
+    color: white;
+
+    border-color: #574df0;
+}
+
+.selects {
+    display: flex;
+
+    gap: 8px;
+}
+
+.select {
+    border-radius: 7px;
+
+    min-width: 57px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+
+/* ============================
+   COURSES GRID
+============================ */
+
+.courses {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 14px;
+}
+
+
+/* ============================
+   COURSE CARD
+============================ */
+
+.course-card {
+    background: white;
+
+    border: 1px solid #e1e3eb;
+
+    border-radius: 13px;
+
+    overflow: hidden;
+
+    box-shadow: 0 2px 5px rgba(20, 25, 60, 0.025);
+}
+
+
+/* ============================
+   COVER
+============================ */
+
+.course-cover {
+    height: 95px;
+
+    position: relative;
+
+    padding: 10px 11px;
+
+    background: linear-gradient(
+        135deg,
+        #24266e,
+        #5045ed
+    );
+}
+
+.cover-1 {
+    background: linear-gradient(
+        135deg,
+        #202367,
+        #5144ef
+    );
+}
+
+.cover-2 {
+    background: linear-gradient(
+        135deg,
+        #242870,
+        #4942dc
+    );
+}
+
+.cover-3 {
+    background: linear-gradient(
+        135deg,
+        #19245c,
+        #303d8e
+    );
+}
+
+.cover-4 {
+    background: linear-gradient(
+        135deg,
+        #3d3ab0,
+        #6261f4
+    );
+}
+
+.cover-5 {
+    background: linear-gradient(
+        135deg,
+        #24216e,
+        #4236bc
+    );
+}
+
+.cover-6 {
+    background: linear-gradient(
+        135deg,
+        #3940bc,
+        #5a65f4
+    );
+}
+
+
+/* ============================
+   CATEGORY
+============================ */
+
+.category {
+    display: inline-block;
+
+    background: white;
+
+    color: #161d3a;
+
+    border-radius: 8px;
+
+    padding: 4px 7px;
+
+    font-size: 8px;
+
+    font-weight: bold;
+}
+
+
+/* ============================
+   COURSE ICON
+============================ */
+
+.course-icon {
+    position: absolute;
+
+    bottom: 11px;
+    left: 11px;
+
+    width: 29px;
+    height: 29px;
+
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 16px;
+}
+
+
+/* ============================
+   COURSE BODY
+============================ */
+
+.course-body {
+    padding: 13px 12px 11px;
+}
+
+.course-body h3 {
+    font-size: 12px;
+
+    color: #131a37;
+
+    margin-bottom: 8px;
+
+    line-height: 1.3;
+}
+
+
+/* ============================
+   TEACHER
+============================ */
+
+.teacher {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    font-size: 8px;
+
+    color: #737b98;
+
+    margin-bottom: 9px;
+}
+
+.teacher-avatar {
+    width: 18px;
+    height: 18px;
+
+    border-radius: 50%;
+
+    background: #413bb5;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 6px;
+
+    font-weight: bold;
+}
+
+
+/* ============================
+   META
+============================ */
+
+.course-meta {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: #66708f;
+
+    font-size: 8px;
+
+    margin-bottom: 9px;
+}
+
+.level {
+    padding: 3px 7px;
+
+    border-radius: 8px;
+
+    font-size: 7px;
+
+    font-weight: bold;
+}
+
+.basic {
+    background: #e5f6c8;
+
+    color: #4d7522;
+}
+
+.intermediate {
+    background: #e8e8ff;
+
+    color: #5551d8;
+}
+
+.advanced {
+    background: #e5e7ed;
+
+    color: #3c4255;
+}
+
+
+/* ============================
+   DETAILS BUTTON
+============================ */
+
+.details {
+    width: 100%;
+
+    height: 29px;
+
+    background: white;
+
+    border: 1px solid #dce0e9;
+
+    border-radius: 7px;
+
+    color: #151b35;
+
+    font-size: 8px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+}
+
+.details span {
+    font-size: 13px;
+}
+
+.details:hover {
+    background: #f7f7ff;
+
+    border-color: #554df0;
+
+    color: #554df0;
+}
+
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media (max-width: 900px) {
+
+    .courses {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .sidebar {
+        position: relative;
+
+        width: 100%;
+        height: auto;
+    }
+
+    .content {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .app {
+        flex-direction: column;
+    }
+
+    .courses {
+        grid-template-columns: 1fr;
+    }
+
+    .filters {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 10px;
+    }
+
+}

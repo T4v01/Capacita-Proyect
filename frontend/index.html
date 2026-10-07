@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Capacita · Registro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="screen">
+  <section class="brand-panel">
+    <div class="decor decor-top"></div>
+    <div class="decor decor-bottom"></div>
+
+    <div class="brand-logo">
+      <span class="brand-logo-box"><img src="assets/logo.png" alt=""></span>
+      <span>Capacita</span>
+    </div>
+
+    <div class="brand-copy">
+      <h1>Aprende, enseña y<br>gestiona capacitaciones<br>en un solo lugar.</h1>
+      <p>Una plataforma pensada para estudiantes, docentes y<br>administradores que quieren crecer con orden y claridad.</p>
+
+      <ul>
+        <li><span class="benefit-dot"><img src="assets/check.png" alt=""></span><span>Catálogo con búsqueda y filtros en tiempo real</span></li>
+        <li><span class="benefit-dot"><img src="assets/check.png" alt=""></span><span>Roles con accesos adaptados a cada perfil</span></li>
+        <li><span class="benefit-dot"><img src="assets/check.png" alt=""></span><span>Tu perfil y tus datos siempre actualizados</span></li>
+      </ul>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <strong>+120</strong>
+        <span>capacitaciones activas</span>
+      </div>
+      <div class="stat">
+        <strong>4.8 / 5</strong>
+        <span>satisfacción promedio</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="form-area">
+    <form class="register-card" id="registerForm">
+      <header class="card-header">
+        <h2>Crea tu cuenta</h2>
+        <p>Empieza a gestionar tus capacitaciones en minutos.</p>
+      </header>
+
+      <div class="two-cols">
+        <label class="field">
+          <span>Nombre</span>
+          <span class="control plain">
+            <input id="firstName" type="text" value="" placeholder="Ingresa tu nombre">
+          </span>
+        </label>
+
+        <label class="field">
+          <span>Apellidos</span>
+          <span class="control plain">
+            <input id="lastName" type="text" value="" placeholder="Ingresa tus apellidos">
+          </span>
+        </label>
+      </div>
+
+      <label class="field">
+        <span>Correo electrónico</span>
+        <span class="control control-success">
+          <img class="control-icon" src="assets/mail.png" alt="">
+          <input id="email" type="email" value="" placeholder="correo@ejemplo.com">
+          <span class="success-mark">✓</span>
+        </span>
+        <span class="helper helper-success is-hidden" id="emailMessage"><span>✓</span> Correo disponible</span>
+      </label>
+
+      <fieldset class="role-fieldset">
+        <legend>Selecciona tu rol</legend>
+        <div class="roles">
+          <button class="role" type="button" data-role="student">
+            <img src="assets/student.png" alt="">
+            <span>Estudiante</span>
+          </button>
+          <button class="role" type="button" data-role="teacher">
+            <img src="assets/teacher.png" alt="">
+            <span>Docente</span>
+          </button>
+          <button class="role" type="button" data-role="admin">
+            <img src="assets/admin.png" alt="">
+            <span>Administrador</span>
+          </button>
+        </div>
+      </fieldset>
+
+      <div class="password-group">
+        <label class="field">
+          <span>Contraseña</span>
+          <span class="control">
+            <img class="control-icon" src="assets/lock.png" alt="">
+            <input id="password" type="password" value="" placeholder="Crea una contraseña">
+            <button class="icon-button toggle-password" type="button" aria-label="Mostrar contraseña">
+              <img src="assets/eye.png" alt="">
+            </button>
+          </span>
+        </label>
+
+        <div class="rules">
+          <span class="rule pending" id="ruleLength">8+ caracteres</span>
+          <span class="rule pending" id="ruleUpper">Una mayúscula</span>
+          <span class="rule pending" id="ruleNumber">Un número</span>
+          <span class="rule pending" id="ruleSymbol">Un símbolo</span>
+        </div>
+      </div>
+
+      <label class="field">
+        <span>Confirmar contraseña</span>
+        <span class="control">
+          <img class="control-icon" src="assets/lock.png" alt="">
+          <input id="confirmPassword" type="password" value="" placeholder="Repite tu contraseña">
+          <button class="icon-button toggle-password" type="button" aria-label="Mostrar contraseña">
+            <img src="assets/eye.png" alt="">
+          </button>
+        </span>
+        <span class="helper helper-error is-hidden" id="matchMessage"><span class="alert">!</span> Las contraseñas no coinciden</span>
+      </label>
+
+      <button class="submit" type="submit">
+        <span><a href="PagPrincila.html">Crear cuenta</a></span>
+        <img src="assets/arrow.png" alt="">
+      </button>
+
+      <p class="login-link">¿Ya tienes cuenta? <a href="#">Inicia sesión</a></p>
+    </form>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
