@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Capacita | Administrador</title>
+
+    <link
+        rel="stylesheet"
+        href="administrador.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+    <aside class="sidebar">
+
+
+        <div class="sidebar-top">
+
+
+            <!-- BRAND -->
+
+            <div class="brand">
+
+                <div class="brand-logo">
+                    🎓
+                </div>
+
+                <span>
+                    Capacita
+                </span>
+
+            </div>
+
+
+            <!-- NAVEGACIÓN -->
+
+            <nav class="navigation">
+
+
+                <a
+                    href="#"
+                    class="nav-item active"
+                >
+
+                    <span class="nav-icon">
+                        ▦
+                    </span>
+
+                    <span>
+                        Dashboard
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+                        ♙
+                    </span>
+
+                    <span>
+                        Usuarios
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+                        ◈
+                    </span>
+
+                    <span>
+                        Docentes
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+                        ▣
+                    </span>
+
+                    <span>
+                        Capacitaciones
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+                        ◷
+                    </span>
+
+                    <span>
+                        Evaluaciones
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+                        ⚙
+                    </span>
+
+                    <span>
+                        Configuración
+                    </span>
+
+                </a>
+
+
+            </nav>
+
+
+        </div>
+
+
+        <!-- ROL -->
+
+        <div class="active-role">
+
+            <span class="role-label">
+                Rol activo
+            </span>
+
+            <span class="role-name">
+                Administrador
+            </span>
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =========================================
+         CONTENIDO
+    ========================================== -->
+
+    <div class="content">
+
+
+        <!-- =====================================
+             TOPBAR
+        ====================================== -->
+
+        <header class="topbar">
+
+
+            <span class="greeting">
+                Hola, Administrador
+            </span>
+
+
+            <div class="profile">
+
+
+                <div class="avatar">
+                    AD
+                </div>
+
+
+                <div class="profile-info">
+
+                    <strong>
+                        Administrador
+                    </strong>
+
+                    <span>
+                        Administrador
+                    </span>
+
+                </div>
+
+
+                <span class="arrow">
+                    ⌄
+                </span>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =====================================
+             MAIN
+        ====================================== -->
+
+        <main class="main">
+
+
+            <!-- TITULO -->
+
+            <section class="page-heading">
+
+
+                <div>
+
+                    <h1>
+                        Panel de administración
+                    </h1>
+
+                    <p>
+                        Gestiona y supervisa todos los recursos de Capacita.
+                    </p>
+
+                </div>
+
+
+                <button class="primary-button">
+                    + Nuevo usuario
+                </button>
+
+
+            </section>
+
+
+
+            <!-- =================================
+                 ESTADÍSTICAS
+            ================================== -->
+
+            <section class="stats">
+
+
+                <!-- USUARIOS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        ♙
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Usuarios
+                        </span>
+
+                        <strong>
+                            248
+                        </strong>
+
+                        <small>
+                            +18 este mes
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DOCENTES -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        ◈
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Docentes
+                        </span>
+
+                        <strong>
+                            24
+                        </strong>
+
+                        <small>
+                            +3 este mes
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CAPACITACIONES -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        ▣
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Capacitaciones
+                        </span>
+
+                        <strong>
+                            18
+                        </strong>
+
+                        <small>
+                            15 publicadas
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PENDIENTES -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        !
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Pendientes
+                        </span>
+
+                        <strong>
+                            32
+                        </strong>
+
+                        <small>
+                            Requieren revisión
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================
+                 CONTENIDO PRINCIPAL
+            ================================== -->
+
+            <div class="dashboard-grid">
+
+
+                <!-- =================================
+                     USUARIOS RECIENTES
+                ================================== -->
+
+                <section class="panel">
+
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <span class="section-label">
+                                USUARIOS
+                            </span>
+
+                            <h2>
+                                Usuarios recientes
+                            </h2>
+
+                        </div>
+
+
+                        <a href="#">
+                            Ver todos →
+                        </a>
+
+                    </div>
+
+
+
+                    <!-- TABLA -->
+
+                    <div class="users-table">
+
+
+                        <!-- HEADER -->
+
+                        <div class="table-header">
+
+                            <span>
+                                Usuario
+                            </span>
+
+                            <span>
+                                Rol
+                            </span>
+
+                            <span>
+                                Estado
+                            </span>
+
+                            <span>
+                                Acción
+                            </span>
+
+                        </div>
+
+
+
+                        <!-- USUARIO 1 -->
+
+                        <div class="user-row">
+
+
+                            <div class="user">
+
+                                <div class="user-avatar purple-avatar">
+                                    AQ
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Ana Quispe
+                                    </strong>
+
+                                    <small>
+                                        ana@correo.com
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <span class="role student">
+                                Estudiante
+                            </span>
+
+
+                            <span class="status active-status">
+                                Activo
+                            </span>
+
+
+                            <button class="action">
+                                Ver
+                            </button>
+
+
+                        </div>
+
+
+
+                        <!-- USUARIO 2 -->
+
+                        <div class="user-row">
+
+
+                            <div class="user">
+
+                                <div class="user-avatar blue-avatar">
+                                    CM
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Carlos Mamani
+                                    </strong>
+
+                                    <small>
+                                        carlos@correo.com
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <span class="role teacher">
+                                Docente
+                            </span>
+
+
+                            <span class="status active-status">
+                                Activo
+                            </span>
+
+
+                            <button class="action">
+                                Ver
+                            </button>
+
+
+                        </div>
+
+
+
+                        <!-- USUARIO 3 -->
+
+                        <div class="user-row">
+
+
+                            <div class="user">
+
+                                <div class="user-avatar green-avatar">
+                                    RC
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Rosa Condori
+                                    </strong>
+
+                                    <small>
+                                        rosa@correo.com
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <span class="role student">
+                                Estudiante
+                            </span>
+
+
+                            <span class="status active-status">
+                                Activo
+                            </span>
+
+
+                            <button class="action">
+                                Ver
+                            </button>
+
+
+                        </div>
+
+
+
+                        <!-- USUARIO 4 -->
+
+                        <div class="user-row">
+
+
+                            <div class="user">
+
+                                <div class="user-avatar orange-avatar">
+                                    JP
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Juan Pérez
+                                    </strong>
+
+                                    <small>
+                                        juan@correo.com
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <span class="role teacher">
+                                Docente
+                            </span>
+
+
+                            <span class="status pending-status">
+                                Pendiente
+                            </span>
+
+
+                            <button class="action">
+                                Revisar
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </section>
+
+
+
+                <!-- =================================
+                     ACTIVIDAD
+                ================================== -->
+
+                <section class="panel activity-panel">
+
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <span class="section-label">
+                                SISTEMA
+                            </span>
+
+                            <h2>
+                                Actividad reciente
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ACTIVIDAD 1 -->
+
+                    <div class="activity">
+
+
+                        <div class="activity-icon green">
+                            +
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Nuevo usuario registrado
+                            </strong>
+
+                            <span>
+                                Ana Quispe creó una cuenta
+                            </span>
+
+                            <small>
+                                Hace 15 minutos
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- ACTIVIDAD 2 -->
+
+                    <div class="activity">
+
+
+                        <div class="activity-icon blue">
+                            ▣
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Nueva capacitación
+                            </strong>
+
+                            <span>
+                                Introducción a Flutter
+                            </span>
+
+                            <small>
+                                Hace 1 hora
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- ACTIVIDAD 3 -->
+
+                    <div class="activity">
+
+
+                        <div class="activity-icon orange">
+                            !
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Docente pendiente
+                            </strong>
+
+                            <span>
+                                Juan Pérez espera aprobación
+                            </span>
+
+                            <small>
+                                Hace 2 horas
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- ACTIVIDAD 4 -->
+
+                    <div class="activity">
+
+
+                        <div class="activity-icon purple">
+                            ✓
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Capacitación aprobada
+                            </strong>
+
+                            <span>
+                                Gestión de Proyectos Ágiles
+                            </span>
+
+                            <small>
+                                Hace 3 horas
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+
+                </section>
+
+
+            </div>
+
+
+
+            <!-- =================================
+                 SEGUNDA FILA
+            ================================== -->
+
+            <div class="bottom-grid">
+
+
+                <!-- CAPACITACIONES -->
+
+                <section class="panel">
+
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <span class="section-label">
+                                CONTENIDO
+                            </span>
+
+                            <h2>
+                                Capacitaciones
+                            </h2>
+
+                        </div>
+
+
+                        <a href="#">
+                            Administrar →
+                        </a>
+
+                    </div>
+
+
+
+                    <div class="course-summary">
+
+
+                        <div class="summary-item">
+
+                            <span class="summary-icon">
+                                ✓
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    15
+                                </strong>
+
+                                <small>
+                                    Publicadas
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <span class="summary-icon draft-icon">
+                                ◷
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    3
+                                </strong>
+
+                                <small>
+                                    En revisión
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <span class="summary-icon rejected-icon">
+                                !
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    2
+                                </strong>
+
+                                <small>
+                                    Rechazadas
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                </section>
+
+
+
+                <!-- ACCIONES -->
+
+                <section class="panel">
+
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <span class="section-label">
+                                GESTIÓN
+                            </span>
+
+                            <h2>
+                                Acciones rápidas
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="quick-actions">
+
+
+                        <a href="#">
+
+                            <span class="quick-icon">
+                                +
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Crear usuario
+                                </strong>
+
+                                <small>
+                                    Agregar estudiante o docente
+                                </small>
+
+                            </div>
+
+                            <span>
+                                →
+                            </span>
+
+                        </a>
+
+
+                        <a href="#">
+
+                            <span class="quick-icon">
+                                ✓
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Revisar solicitudes
+                                </strong>
+
+                                <small>
+                                    8 solicitudes pendientes
+                                </small>
+
+                            </div>
+
+                            <span>
+                                →
+                            </span>
+
+                        </a>
+
+
+                    </div>
+
+
+                </section>
+
+
+            </div>
+
+
+        </main>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

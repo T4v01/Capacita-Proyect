@@ -1,0 +1,130 @@
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Manrope,Arial,sans-serif;color:#0b1230;background:#f5f6fb}
+.screen{min-height:983px;display:grid;grid-template-columns:600px 1fr}
+
+/* PANEL IZQUIERDO */
+.brand-panel{
+  position:relative;overflow:hidden;min-height:983px;padding:56px;
+  display:flex;flex-direction:column;justify-content:space-between;color:#fff;
+  background:linear-gradient(121.3989deg,#0b1230 0%,#1e2a6b 70.721%)
+}
+.decor{position:absolute;border-radius:50%;pointer-events:none}
+.decor-top{width:460px;height:460px;left:300px;top:-140px;background:linear-gradient(145deg,rgba(49,51,137,.98),rgba(47,49,133,.94))}
+.decor-bottom{width:320px;height:320px;left:-120px;top:560px;background:linear-gradient(145deg,rgba(36,43,111,.95),rgba(39,47,122,.78))}
+.brand-logo,.brand-copy,.stats{position:relative;z-index:1}
+.brand-logo{display:flex;align-items:center;gap:10px;height:36px;font-size:20px;font-weight:800}
+.brand-logo-box{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#4f46e5 0%,#6d5ae6 70.721%)}
+.brand-logo-box img{width:20px;height:20px;display:block}
+.brand-copy{margin-top:12px}
+.brand-copy h1{margin:0 0 24px;font-size:38px;line-height:46px;letter-spacing:-.45px;font-weight:800}
+.brand-copy>p{margin:0 0 24px;color:#b8c0e0;font-size:16px;line-height:26px;font-weight:400}
+.brand-copy ul{list-style:none;padding:8px 0 0;margin:0;display:grid;gap:14px}
+.brand-copy li{display:flex;align-items:center;gap:12px;font-size:15px;line-height:20px;font-weight:500}
+.benefit-dot{width:20px;height:20px;border-radius:999px;background:#84cc16;display:grid;place-items:center;flex:0 0 auto}
+.benefit-dot img{width:12px;height:12px;display:block}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat{height:82px;padding:16px;border:1px solid rgba(255,255,255,.14);border-radius:16px;background:rgba(255,255,255,.08);display:flex;flex-direction:column;gap:2px}
+.stat strong{font-size:22px;line-height:30px;font-weight:800}
+.stat span{font-size:12px;line-height:16px;color:#b8c0e0;font-weight:500}
+
+/* PANEL DERECHO */
+.form-area{min-height:983px;background:#f5f6fb;display:flex;align-items:center;justify-content:center;padding:64px 48px}
+.register-card{
+  width:480px;padding:36px;border:1px solid #e3e6f0;border-radius:24px;background:#fff;
+  box-shadow:0 16px 40px rgba(10,18,48,.08);display:flex;flex-direction:column;gap:20px
+}
+.card-header{display:flex;flex-direction:column;gap:10px}
+.card-header h2{margin:0;font-size:28px;line-height:34px;font-weight:800;letter-spacing:-.25px}
+.card-header p{margin:0;font-size:15px;line-height:23px;color:#5b6482;font-weight:400}
+
+.two-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:18px;font-weight:600}
+.control{
+  height:48px;border:1px solid #e3e6f0;border-radius:12px;background:#fff;
+  display:flex;align-items:center;gap:10px;padding:0 14px
+}
+.control.plain{padding:0}
+.control.plain input{padding:0 14px}
+.control-success{border:1.5px solid #84cc16}
+.control-icon{width:18px;height:18px;display:block;flex:0 0 auto}
+.control input{
+  flex:1;min-width:0;border:0;outline:0;background:transparent;color:#0b1230;
+  font:500 14px/19px Manrope,Arial,sans-serif;padding:0
+}
+.success-mark{width:18px;height:18px;display:grid;place-items:center;color:#65a30d;font-size:15px;font-weight:800}
+.helper{display:flex;align-items:center;gap:6px;font-size:12px;line-height:16px;font-weight:500}
+.helper-success{color:#3f6212}
+.helper-error{color:#dc2626}
+.alert{
+  width:14px;height:14px;border:1.5px solid #dc2626;border-radius:50%;
+  display:inline-grid;place-items:center;font-size:9px;line-height:1;font-weight:800
+}
+
+.role-fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.role-fieldset legend{padding:0;margin:0 0 6px;font-size:13px;line-height:18px;font-weight:600}
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.role{
+  height:79px;padding:14px 8px;border:1px solid #e3e6f0;border-radius:12px;background:#fff;color:#0b1230;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;
+  font:600 13px/18px Manrope,Arial,sans-serif
+}
+.role img{width:22px;height:22px;display:block}
+.role.active{border:1.5px solid #4f46e5;background:#eef0ff;color:#4f46e5}
+
+.password-group{display:flex;flex-direction:column;gap:10px}
+.icon-button{width:18px;height:18px;padding:0;border:0;background:transparent;display:grid;place-items:center;cursor:pointer}
+.icon-button img{width:18px;height:18px;display:block}
+.rules{display:flex;flex-wrap:wrap;gap:8px}
+.rule{padding:5px 10px;border-radius:999px;font-size:12px;line-height:16px;font-weight:500;white-space:nowrap}
+.rule.ok{background:#ecfccb;color:#3f6212}
+.rule.pending{background:#f3f4f6;color:#5b6482}
+
+.submit{
+  height:50px;padding:0 22px;border:0;border-radius:12px;
+  background:linear-gradient(172.98deg,#4f46e5 0%,#6657f0 70.721%);
+  box-shadow:0 8px 20px rgba(10,18,48,.25);
+  color:#fff;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;
+  font:600 15px/20px Manrope,Arial,sans-serif
+}
+.submit img{width:18px;height:18px;display:block}
+.login-link{margin:0;text-align:center;font-size:14px;line-height:19px;font-weight:500;color:#5b6482}
+.login-link a{margin-left:6px;color:#4f46e5;text-decoration:none;font-weight:700}
+
+.role:focus-visible,.submit:focus-visible,.icon-button:focus-visible,.login-link a:focus-visible,input:focus-visible{
+  outline:2px solid #4f46e5;outline-offset:2px
+}
+
+@media(max-width:980px){
+  .screen{grid-template-columns:1fr}
+  .brand-panel{min-height:auto;padding:40px}
+  .brand-copy{margin:64px 0}
+  .form-area{min-height:auto;padding:48px 20px}
+  .register-card{width:min(480px,100%)}
+}
+@media(max-width:560px){
+  .brand-panel{padding:28px}
+  .brand-copy h1{font-size:32px;line-height:39px}
+  .brand-copy h1 br,.brand-copy>p br{display:none}
+  .stats,.two-cols{grid-template-columns:1fr}
+  .register-card{padding:24px}
+  .roles{grid-template-columns:1fr}
+  .role{height:64px;flex-direction:row}
+}
+
+/* Estados de interacción del formulario */
+.is-hidden{display:none!important}
+.control input::placeholder{color:#9aa2b8;font-weight:400}
+.role:hover{
+  border:1.5px solid #4f46e5;
+  background:#eef0ff;
+  color:#4f46e5;
+}
+.role:hover img{opacity:1}
+.role.selected{
+  border:1.5px solid #4f46e5;
+  background:#eef0ff;
+  color:#4f46e5;
+}
+.rule.ok::before{content:"✓ ";font-weight:700}
+.control.control-success{border:1.5px solid #84cc16}
+.control.control-error{border:1.5px solid #ef4444}
